@@ -1,0 +1,39 @@
+﻿@using ML;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div>
+    @{
+        if (ViewData["ListaEmpleados"] != null)
+        {
+            List<Empleado> lista = (List<Empleado>)ViewData["ListaEmpleados"];
+
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col">Salario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Empleado item in lista)
+                    {
+                        <tr>
+                            <th scope="row">@item.Id</th>
+                            <td>@item.Nombre</td>
+                            <td>@item.Edad</td>
+                            <td>@item.Salario</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    }
+</div>
